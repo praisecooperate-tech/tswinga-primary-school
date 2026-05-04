@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Year Planner | Tswinga Primary School</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+/* =========================
+   HERO FIX (VERY IMPORTANT)
+========================= */
+.hero-premium {
+  position: relative;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4); /* darker, not white */
+  z-index: 1;
+}
+
+.hero-text {
+  position: relative;
+  z-index: 2;
+  color: white;
+}
+
+/* =========================
+   PLANNER
+========================= */
+.planner-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 40px;
+}
+
+.planner-card {
+  background: white;
+  padding: 18px;
+  border-radius: 14px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+.planner-card.done {
+  background: #e6ffe6;
+  text-decoration: line-through;
+}
+
+.planner-card input {
+  width: 20px;
+  height: 20px;
+}
+
+/* =========================
+   CALENDAR
+========================= */
+#calendar {
+  margin-top: 20px;
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  max-height: 400px;
+  overflow-y: auto;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.month {
+  margin-bottom: 25px;
+}
+
+.month h3 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: black;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  font-size: 12px;
+}
+
+.calendar-grid div {
+  padding: 6px;
+  text-align: center;
+  border-radius: 6px;
+  user-select: none;
+  background: #f5f5f5;
+}
+
+.calendar-grid strong {
+  color: black;
+}
+
+.today {
+  background: #0b2f6b !important;
+  color: white;
+}
+
+</style>
+</head>
+
+<body class="admissions-page">
+
+<!-- HEADER -->
+<header>
+<div class="top-bar">
+<div class="logo-section">
+<img src="images/logo.jpg" class="school-logo">
+<div class="school-name">Tswinga Primary School</div>
+</div>
+
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+<nav class="menu" id="mobileMenu">
+<a href="index.html">Home</a>
+<a href="academics.html">Academics</a>
+<a href="planner.html">Planner</a>
+<a href="contact.html">Contact</a>
+</nav>
+</div>
+</header>
+
+<!-- HERO -->
+<section class="hero-premium">
+<div class="hero-overlay"></div>
+
+<div class="hero-text">
+<h1>School Year Planner</h1>
+<p>Track events, deadlines & activities</p>
+
+<div id="calendar"></div>
+</div>
+</section>
+
+<!-- PLANNER -->
+<section class="planner-container">
+<h2>2026 School Planner</h2>
+<div id="planner-list"></div>
+</section>
+
+<script>
+
+// =========================
+// EVENTS
+// =========================
+const events = [
+
+  // ===== TERM 1 =====
+  "2026/01/12-13 - Teachers Opening & Staff Meeting",
+  "2026/01/13 - Phase Meetings & Lesson Plans Submission",
+  "2026/01/14 - Learners Opening Day",
+
+  "2026/02/04 - World Read Aloud Day",
+  "2026/02/10 - Submission of Young Leaders Names",
+  "2026/02/10 - Grade R & 7 Parents Meeting",
+  "2026/02/10 - Pre-Moderation of SBA (Orals)",
+  "2026/02/12 - Phase Parents Meeting",
+  "2026/02/13 - Year Dedication",
+  "2026/02/13 - Grade 3 & 6 Common Task",
+
+  "2026/02/16-18 - Class Visits & File Moderation",
+  "2026/02/17 - Parents Meeting (QP & Retained Learners)",
+  "2026/02/19 - Moderation of Files",
+  "2026/02/26 - FINCOM & SGB Meeting",
+
+  "2026/03/02-04 - Pre-Moderation of Question Papers",
+  "2026/03/06 - Pyjama Day",
+  "2026/03/09 - Term 1 Assessments Start",
+  "2026/03/10-20 - Post Moderation",
+  "2026/03/11-20 - Submission of Mark Sheets",
+  "2026/03/13 - International Day of Mathematics",
+  "2026/03/20-21 - Young Leaders Empowerment",
+
+  "2026/03/23 - Submission of Schedules",
+  "2026/03/25 - Results Analysis",
+  "2026/03/26 - FINCOM & SGB Meeting",
+  "2026/03/27 - Parents Meeting & Report Cards",
+  "2026/03/27 - School Closes (Term 1)",
+
+
+  // ===== TERM 2 =====
+  "2026/04/08 - School Reopens (Term 2)",
+  "2026/04/08 - Lesson Plans Submission",
+  "2026/04/09 - Departmental Meetings",
+
+  "2026/04/08-05/29 - QMS Mid-Year Appraisal",
+  "2026/04/14 - Submission of Educators Files",
+  "2026/04/15 - Moderation of Files (DHs)",
+  "2026/04/16 - Moderation of Files (DPs)",
+
+  "2026/04/21 - Grade R Parents Meeting",
+  "2026/04/24 - Awards",
+  "2026/04/28 - Meeting with QP Learners Parents",
+  "2026/04/29 - FINCOM & SGB Meeting",
+
+  "2026/05/08 - Website Launch",
+  "2026/05/11-14 - Internal Reading Competition",
+  "2026/05/13-17 - Pre-Moderation (Practicals)",
+  "2026/05/22-23 - Educators Development",
+  "2026/05/25 - Africa Day Celebration",
+  "2026/05/26-28 - Young Leaders Workshop",
+  "2026/05/29 - FINCOM & SGB Meeting",
+
+  "2026/06/05 - Term 2 Assessments Start",
+  "2026/06/09-17 - Post Moderation",
+  "2026/06/09-17 - Submission of Mark Sheets",
+
+  "2026/06/17 - Fathers Day Celebration",
+  "2026/06/18 - Grade R Career Exhibition",
+  "2026/06/19 - Schedules Submission",
+  "2026/06/22 - Results Analysis",
+  "2026/06/24 - FINCOM & SGB Meeting",
+  "2026/06/26 - Parents Meeting & Reports",
+  "2026/06/26 - School Closes (Term 2)",
+
+
+  // ===== TERM 3 =====
+  "2026/07/21 - School Reopens (Term 3)",
+  "2026/07/21 - Lesson Plans Submission",
+  "2026/07/22 - Departmental Meeting",
+
+  "2026/07/24 - Awards",
+  "2026/07/24 - Submission of Files",
+  "2026/07/27 - Moderation of Files (DHs)",
+  "2026/07/28 - Moderation of Files (DPs)",
+  "2026/07/29 - FINCOM & SGB Meeting",
+
+  "2026/08/13-14 - Foundation Phase Trip",
+  "2026/08/14-19 - Class Visits",
+  "2026/08/17 - Parents Meeting (QP Learners)",
+  "2026/08/17 - Pre-Moderation",
+  "2026/08/20 - Parents Meeting (Gr 4-7)",
+  "2026/08/21 - Women's Day Celebration",
+  "2026/08/25-28 - Intersen Trip",
+  "2026/08/28 - FINCOM & SGB Meeting",
+
+  "2026/09/02 - Term 3 Assessments Start",
+  "2026/09/03-15 - Post Moderation",
+  "2026/09/03-15 - Submission of Mark Sheets",
+
+  "2026/09/08 - Literacy Day Celebration",
+  "2026/09/16 - Schedules Submission",
+  "2026/09/21 - Results Analysis",
+  "2026/09/21 - FINCOM & SGB Meeting",
+  "2026/09/22 - Grade 7 Farewell",
+  "2026/09/23 - Parents Meeting & Reports",
+  "2026/09/23 - School Closes (Term 3)",
+
+
+  // ===== TERM 4 =====
+  "2026/10/06 - School Reopens (Term 4)",
+  "2026/10/07 - Departmental Meeting",
+  "2026/10/08 - No School Shoes Day",
+
+  "2026/10/07-15 - Budget Preparation",
+  "2026/10/07-30 - QMS Annual Appraisal",
+  "2026/10/09 - Grade 7 Career Day",
+  "2026/10/12 - Moderation of CASS Files",
+  "2026/10/13 - Parents Meeting (QP Learners)",
+  "2026/10/16 - Grade R Graduation",
+
+  "2026/10/19 - Pre-Moderation",
+  "2026/10/29 - FINCOM & SGB Meeting",
+  "2026/10/30 - Awards",
+
+  "2026/11/06 - Final Assessments Start",
+  "2026/11/06-25 - Post Moderation",
+  "2026/11/06-25 - Submission of Mark Sheets",
+
+  "2026/11/27 - FINCOM & SGB Meeting",
+  "2026/11/30 - Parents Meeting (Budget)",
+
+  "2026/12/02 - Schedules Submission",
+  "2026/12/03 - Results Analysis",
+  "2026/12/08 - FINCOM & SGB Meeting",
+  "2026/12/09 - AGM & Report Cards",
+  "2026/12/09 - School Closes (End of Year)",
+  "2026/12/10-11 - Evaluation & 2027 Planning"
+
+];
+// =========================
+// SAVE SYSTEM
+// =========================
+let saved = JSON.parse(localStorage.getItem("planner")) || {};
+const container = document.getElementById("planner-list");
+
+events.forEach((event, index) => {
+
+  const div = document.createElement("div");
+  div.className = "planner-card";
+
+  if (saved[index]) div.classList.add("done");
+
+  div.innerHTML = `
+    <span>${event}</span>
+    <input type="checkbox" ${saved[index] ? "checked" : ""}>
+  `;
+
+  const checkbox = div.querySelector("input");
+
+  checkbox.addEventListener("change", () => {
+    saved[index] = checkbox.checked;
+    localStorage.setItem("planner", JSON.stringify(saved));
+    div.classList.toggle("done");
+  });
+
+  container.appendChild(div);
+});
+
+// =========================
+// FULL 2026 CALENDAR
+// =========================
+function generateCalendar() {
+
+  const calendar = document.getElementById("calendar");
+  const year = 2026;
+
+  const months = [
+    "January","February","March","April","May","June",
+    "July","August","September","October","November","December"
+  ];
+
+  const days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+
+  let html = "";
+
+  for (let m = 0; m < 12; m++) {
+
+    const firstDay = new Date(year, m, 1).getDay();
+    const daysInMonth = new Date(year, m + 1, 0).getDate();
+
+    html += `<div class="month">`;
+    html += `<h3>${months[m]} 2026</h3>`;
+    html += `<div class="calendar-grid">`;
+
+    days.forEach(d => html += `<div><strong>${d}</strong></div>`);
+
+    for (let i = 0; i < firstDay; i++) {
+      html += `<div></div>`;
+    }
+
+    for (let d = 1; d <= daysInMonth; d++) {
+      html += `<div>${d}</div>`;
+    }
+
+    html += `</div></div>`;
+  }
+
+  calendar.innerHTML = html;
+}
+
+generateCalendar();
+
+// MENU
+function toggleMenu() {
+  document.getElementById("mobileMenu").classList.toggle("show");
+}
+
+</script>
+
+</body>
+</html>

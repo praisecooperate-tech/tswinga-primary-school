@@ -1,0 +1,1168 @@
+/* =========================================
+   TSWINGA PRIMARY SCHOOL — WOW PREMIUM CSS
+   Royal Blue • White • Gold • Cyan • Green
+========================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================
+   ROOT COLORS
+========================= */
+
+:root {
+  --yellow: #ffd700;
+  --blue: #00d9ff;
+  --green: #8cff66;
+  --white: #ffffff;
+  --dark: #063b63;
+  --deep-blue: #0b2f6b;
+  --soft-bg: #f8fcff;
+  --light-card: #f7fcff;
+  --shadow: rgba(0, 0, 0, 0.08);
+}
+
+/* =========================
+   BODY
+========================= */
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--soft-bg);
+  color: #1a1a1a;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* =========================
+   TEXT COLORS
+========================= */
+
+.yellow {
+  color: var(--yellow);
+}
+
+.blue {
+  color: var(--blue);
+}
+
+.green {
+  color: var(--green);
+}
+
+.white {
+  color: var(--white);
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  background: linear-gradient(
+    90deg,
+    #0b2f6b,
+    #123d82
+  );
+  border-bottom: 2px solid rgba(255,255,255,0.10);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+  backdrop-filter: blur(12px);
+}
+
+.top-bar {
+  width: 92%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+}
+
+/* =========================
+   LOGO SECTION
+========================= */
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.school-logo {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 50%;
+  background: white;
+  padding: 6px;
+  border: 2px solid rgba(255,255,255,0.35);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+  transition: 0.3s ease;
+}
+
+.school-logo:hover {
+  transform: scale(1.06);
+}
+
+.school-name {
+  font-size: 30px;
+  font-weight: 800;
+  color: white;
+  letter-spacing: 0.3px;
+  line-height: 1.2;
+}
+
+/* =========================
+   HAMBURGER BUTTON
+========================= */
+
+.menu-btn {
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.20);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.10);
+}
+
+.menu-btn:hover {
+  transform: scale(1.04);
+  background: rgba(255,255,255,0.20);
+}
+
+/* =========================
+   GLASS MENU
+========================= */
+
+.menu {
+  position: fixed;
+  right: -100%;
+  top: 20px;
+  width: 310px;
+  min-height: 350px;
+  padding: 90px 30px 30px;
+  border-radius: 24px;
+  background: rgba(255,255,255,0.20);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.35);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.12);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.35s ease;
+  z-index: 1000;
+}
+
+.menu.show {
+  right: 20px;
+  opacity: 1;
+  visibility: visible;
+}
+
+
+.menu a {
+  display: block;
+  margin: 14px 0;
+  padding: 15px 18px;
+  text-decoration: none;
+  color: var(--deep-blue);
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.60);
+  transition: 0.3s ease;
+}
+
+.menu a:hover {
+  background: rgba(0,217,255,0.18);
+  transform: translateX(6px);
+}
+
+/* =========================
+   HERO BANNER (FIXED CLEAN IMAGE)
+========================= */
+
+
+/* =========================
+   HERO SLIDER ANIMATION (PREMIUM)
+========================= */
+
+/* =========================
+   HERO SLIDER (CLEAN FIX)
+========================= */
+
+.hero-premium {
+  position: relative;
+  height: 75vh; /* desktop height */
+  margin-top: 100px; /* space for fixed header */
+  overflow: hidden;
+}
+/* SLIDER */
+.hero-slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  animation: fadeSlide 15s infinite;
+}
+.hero-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+/* TIMING */
+.hero-slide:nth-child(1) { animation-delay: 0s; }
+.hero-slide:nth-child(2) { animation-delay: 5s; }
+.hero-slide:nth-child(3) { animation-delay: 10s; }
+
+/* FADE ANIMATION */
+@keyframes fadeSlide {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  30% { opacity: 1; }
+  40% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* DARK OVERLAY */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+}
+
+/* TEXT BOX */
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  text-align: center;
+  color: white;
+}
+
+/* HERO TEXT (DESKTOP) */
+.hero-text h1 {
+  font-size: 44px;
+  margin-bottom: 15px;
+}
+
+.hero-text p {
+  font-size: 18px;
+}
+
+/* MOBILE FIX */
+
+
+  .hero-text h1 {
+    font-size: 26px;
+  }
+
+  .hero-text p {
+    font-size: 14px;
+  }
+}
+
+
+/* =========================
+   MOTTO
+========================= */
+
+.motto {
+  text-align: center;
+  margin-bottom: 28px;
+  font-size: 28px;
+  font-weight: 800;
+  animation: glow 3s infinite;
+}
+
+/* =========================
+   APPLY BUTTON
+========================= */
+
+.apply-btn {
+  display: inline-block;
+  padding: 15px 36px;
+  background: linear-gradient(
+    135deg,
+    var(--yellow),
+    #ffe76a
+  );
+  color: #111;
+  text-decoration: none;
+  border-radius: 14px;
+  font-weight: 800;
+  box-shadow: 0 15px 30px rgba(255,215,0,0.22);
+  transition: 0.3s ease;
+}
+
+.apply-btn:hover {
+  transform: translateY(-3px);
+}
+
+/* =========================
+   GENERAL SECTION
+========================= */
+
+section {
+  padding: 90px 8%;
+}
+
+/* =========================
+   PRINCIPAL SECTION
+========================= */
+
+.principal-modern {
+  background: linear-gradient(
+    180deg,
+    #ffffff,
+    #f5fdff
+  );
+}
+
+.principal-grid,
+.phase-grid,
+.vision-modern {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 36px;
+  align-items: center;
+}
+
+.principal-photo {
+  text-align: center;
+}
+
+.principal-photo img {
+  width: 100%;
+  max-width: 420px;
+  height: 420px; /* fixed square */
+  object-fit: cover;
+  object-position: top center; /* THIS FIXES FACE CUTTING */
+  border-radius: 24px;
+  border: 6px solid rgba(0,217,255,0.18);
+  box-shadow: 0 22px 45px rgba(0,0,0,0.08);
+  animation: principalLoad 2.2s ease forwards;
+}
+
+.principal-name-box {
+  margin-top: 20px;
+  background: white;
+  padding: 18px;
+  border-radius: 18px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+}
+
+.principal-name-box h3 {
+  color: var(--deep-blue);
+  margin-bottom: 6px;
+}
+
+.principal-name-box p {
+  color: #555;
+}
+
+.principal-content span {
+  color: var(--blue);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+
+.principal-content h2 {
+  font-size: 38px;
+  margin: 10px 0 20px;
+  color: var(--dark);
+}
+
+.principal-content p {
+  line-height: 1.9;
+  margin-bottom: 18px;
+  font-size: 17px;
+}
+
+/* =========================
+   ACADEMIC PHASES
+========================= */
+
+.academic-phases h2,
+.vision-modern h2 {
+  text-align: center;
+  font-size: 38px;
+  margin-bottom: 35px;
+  color: var(--dark);
+}
+
+.phase-card,
+.vision-box {
+  background: white;
+  padding: 34px;
+  border-radius: 24px;
+  border-top: 6px solid var(--green);
+  box-shadow: 0 18px 35px rgba(0,0,0,0.05);
+  transition: 0.35s ease;
+}
+
+.phase-card:hover,
+.vision-box:hover {
+  transform: translateY(-8px);
+}
+
+.phase-card h3 {
+  color: var(--deep-blue);
+  margin-bottom: 14px;
+  font-size: 24px;
+}
+
+.phase-card p {
+  line-height: 1.8;
+}
+
+/* =========================
+   VISION + MISSION
+========================= */
+
+.vision-box {
+  background: linear-gradient(
+    180deg,
+    #ffffff,
+    #f7feff
+  );
+  border-left: 6px solid var(--blue);
+}
+
+.vision-box h2 {
+  color: var(--deep-blue);
+  margin-bottom: 14px;
+}
+
+.vision-box p {
+  line-height: 1.9;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+  background: linear-gradient(
+    135deg,
+    #0b2f6b,
+    #123d82
+  );
+  color: white;
+  text-align: center;
+  padding: 36px;
+  font-size: 16px;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow {
+  0% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.85;
+  }
+}
+
+@keyframes principalLoad {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(30px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+.reveal {
+  opacity: 0;
+  transition: all 1s ease;
+}
+
+.fade-up {
+  transform: translateY(60px);
+}
+
+.fade-left {
+  transform: translateX(-80px);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .motto {
+    font-size: 20px;
+  }
+
+  .logo-section {
+    gap: 10px;
+  }
+
+  .school-logo {
+    width: 52px;
+    height: 52px;
+    padding: 4px;
+  }
+
+  .school-name {
+    font-size: 20px;
+  }
+
+  .principal-content h2,
+  .academic-phases h2,
+  .vision-modern h2 {
+    font-size: 30px;
+  }
+
+  .menu {
+    width: 90%;
+  }
+
+}
+/* =========================
+   ABOUT PAGE ONLY - GROWTH CARDS
+========================= */
+
+.growth-card {
+  color: white;
+  text-align: center;
+  border: none;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.10);
+}
+
+.growth-card h3 {
+  font-size: 40px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  color: white;
+}
+
+.growth-card p {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.growth-blue {
+  background: linear-gradient(
+    135deg,
+    #00c6ff,
+    #0072ff
+  );
+}
+
+.growth-gold {
+  background: linear-gradient(
+    135deg,
+    #ffd700,
+    #ffb300
+  );
+  color: #111;
+}
+
+.growth-gold h3 {
+  color: #111;
+}
+
+.growth-green {
+  background: linear-gradient(
+    135deg,
+    #00e676,
+    #00c853
+  );
+}
+
+.growth-card:hover {
+  transform: translateY(-8px) scale(1.02);
+}
+.growth-white {
+  background: linear-gradient(
+    135deg,
+    #ffffff,
+    #dff6ff
+  );
+  color: #063b63;
+}
+
+.growth-white h3 {
+  color: #063b63;
+}
+/* =========================
+   ABOUT PAGE - 4 CARDS IN ONE ROW
+========================= */
+
+/* HOME PAGE ONLY */
+body:not(.about-page) .academic-phases .phase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  align-items: stretch;
+}
+/* ABOUT PAGE - growth cards only */
+.growth-section .phase-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  align-items: stretch;
+}
+
+/* =========================
+   ABOUT PAGE - SCHOOL EXCELLENCE SECTION
+========================= */
+
+.school-excellence {
+  background: linear-gradient(
+    180deg,
+    #ffffff,
+    #f5fcff
+  );
+  text-align: center;
+}
+
+.school-excellence h2 {
+  font-size: 38px;
+  color: var(--dark);
+  margin-bottom: 40px;
+}
+
+.excellence-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+  align-items: stretch;
+}
+
+.excellence-card {
+  background: white;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  transition: 0.4s ease;
+}
+
+.excellence-card:hover {
+  transform: translateY(-10px) scale(1.02);
+}
+
+.excellence-card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  transition: 0.5s ease;
+}
+
+.excellence-card:hover img {
+  transform: scale(1.05);
+}
+
+.excellence-content {
+  padding: 28px;
+  text-align: left;
+}
+
+.excellence-content h3 {
+  font-size: 24px;
+  color: var(--deep-blue);
+  margin-bottom: 14px;
+}
+
+.excellence-content p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #444;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .school-excellence h2 {
+    font-size: 30px;
+  }
+
+  .excellence-card img {
+    height: 200px;
+  }
+}
+/* ABOUT PAGE - FORCE GROWTH CARDS IN ONE ROW */
+
+body.about-page .growth-section .phase-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 25px !important;
+  align-items: stretch !important;
+}
+
+body.about-page .growth-section .phase-card {
+  width: 100% !important;
+}
+/* MOBILE FIX FOR GROWTH CARDS */
+
+@media (max-width: 768px) {
+  body.about-page .growth-section .phase-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  body.about-page .growth-section .phase-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+/* =========================
+   ABOUT PAGE - FEATURE PICTURE CARDS
+========================= */
+
+.feature-section {
+  padding: 90px 8%;
+  background: #f8fcff;
+}
+
+.feature-title {
+  text-align: center;
+  font-size: 38px;
+  color: #063b63;
+  margin-bottom: 40px;
+  font-weight: 800;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+.feature-card {
+  background: white;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  transition: 0.4s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+}
+
+.feature-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: 0.5s ease;
+}
+
+.feature-card:hover img {
+  transform: scale(1.05);
+}
+
+.feature-content {
+  padding: 28px;
+}
+
+.feature-content h3 {
+  font-size: 24px;
+  color: #0b2f6b;
+  margin-bottom: 14px;
+  font-weight: 800;
+}
+
+.feature-content p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #444;
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+  .feature-title {
+    font-size: 30px;
+  }
+
+  .feature-card img {
+    height: 220px;
+  }
+}
+/* =========================
+   PRINCIPAL PHOTO POLISH
+========================= */
+
+
+.principal-photo img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.14);
+}
+
+.principal-name-box {
+  margin-top: 20px;
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 18px 35px rgba(0,0,0,0.06);
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+  .principal-photo img {
+    height: auto; /* allow scaling on small screens */
+    aspect-ratio: 1 / 1;
+  }
+}
+
+  
+.principal-name-box {
+    padding: 16px;
+  }
+}
+/* ADMISSIONS PAGE BUTTON MOBILE FIX */
+
+@media (max-width: 768px) {
+  .admissions-page .apply-btn {
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    margin: 15px auto;
+    text-align: center;
+  }
+}
+/* =========================
+   STAFF PAGE
+========================= */
+
+.staff-section {
+  padding: 80px 8%;
+  text-align: center;
+}
+
+.staff-section h2 {
+  font-size: 36px;
+  margin-bottom: 40px;
+  color: var(--dark);
+}
+
+/* GRID SYSTEM */
+.staff-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+}
+
+/* CARD */
+.staff-card {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 18px 35px rgba(0,0,0,0.08);
+  transition: 0.3s ease;
+}
+
+.staff-card:hover {
+  transform: translateY(-8px);
+}
+
+/* IMAGE */
+.staff-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 15px;
+}
+
+/* TEXT */
+.staff-card h3 {
+  font-size: 18px;
+  color: var(--deep-blue);
+}
+
+.staff-card p {
+  font-size: 14px;
+  color: #555;
+}
+
+/* =========================
+   TABLET VIEW
+========================= */
+
+@media (max-width: 1024px) {
+  .staff-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* =========================
+   MOBILE VIEW
+========================= */
+
+@media (max-width: 768px) {
+
+  .staff-section {
+    padding: 60px 5%;
+  }
+
+  .staff-section h2 {
+    font-size: 28px;
+  }
+
+  .staff-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .staff-card {
+    padding: 15px;
+  }
+
+  .staff-card img {
+    height: 160px;
+  }
+
+  .staff-card h3 {
+    font-size: 15px;
+  }
+
+  .staff-card p {
+    font-size: 13px;
+  }
+
+}
+
+/* =========================
+   SMALL PHONES
+========================= */
+
+@media (max-width: 480px) {
+
+  .staff-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .staff-card img {
+    height: 180px;
+  }
+
+}
+
+/* =========================
+   EXTRA POLISH
+========================= */
+
+.staff-card {
+  overflow: hidden;
+}
+
+.staff-card img {
+  transition: transform 0.4s ease;
+}
+.staff-card:hover img {
+  transform: scale(1.05);
+}
+
+
+/* =========================
+   RESPONSIVE HERO FIX
+========================= */
+
+/* TABLET */
+@media (max-width: 1024px) {
+  .hero-premium {
+    height: 60vh;
+    margin-top: 90px;
+  }
+
+  .hero-text h1 {
+    font-size: 34px;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .hero-premium {
+    height: 45vh;
+    margin-top: 80px;
+  }
+
+  .hero-text h1 {
+    font-size: 26px;
+  }
+
+  .hero-text p {
+    font-size: 14px;
+  }
+}
+/* =========================
+   NEWSLETTER MOBILE FIX
+========================= */
+
+@media (max-width: 768px) {
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .feature-card {
+    width: 100%;
+    border-radius: 18px;
+  }
+
+  .feature-content {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .feature-content h3 {
+    font-size: 20px;
+  }
+
+  .feature-content p {
+    font-size: 14px;
+  }
+
+  .feature-content input {
+    width: 100%;
+  }
+
+  /* ONLY buttons inside newsletter */
+  .feature-content .apply-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+}
+/* =========================
+   ACADEMICS PREMIUM STYLE (LOCKED)
+========================= */
+
+.academics-page .term-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+  background: #f8fcff;
+}
+
+.academics-page .term-box p {
+  font-weight: 600;
+  color: #063b63;
+}
+
+/* ONLY buttons inside academics page */
+.academics-page .term-box .apply-btn {
+  padding: 8px 18px;
+  font-size: 14px;
+}
+/* CONTACT PAGE */
+.contact-section {
+  padding: 80px 8%;
+  background: #f4fbff;
+}
+
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background: white;
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+}
+
+.contact-info h2 {
+  color: var(--deep-blue);
+  margin-bottom: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 12px;
+  border: 1px solid #d9e6f2;
+}
+
+.map-section {
+  padding: 60px 8%;
+}
+
+.map-container {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+}
+
+@media (max-width: 768px) {
+  .contact-container {
+    grid-template-columns: 1fr;
+  }
+}
+/* =========================
+   ACADEMICS IMAGE FIX
+========================= */
+.academics-page .feature-card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  object-position: top center; /* keeps faces visible */
+  border-radius: 14px;
+}

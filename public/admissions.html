@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admissions | Tswinga Primary School</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="admissions-page">
+
+<!-- =========================
+     HEADER
+========================= -->
+<header>
+
+  <div class="top-bar">
+
+    <div class="logo-section">
+      <img src="images/logo.jpg" class="school-logo" alt="School Logo">
+      <div class="school-name">Tswinga Primary School</div>
+    </div>
+
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+  </div>
+
+  <nav class="menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="aboutus.html">About Us</a>
+    <a href="admissions.html">Admissions</a>
+    <a href="academics.html">Academics</a>
+    <a href="staff.html">Staff</a>
+<a href="planner.html">Year Planner</a>
+    <a href="contact.html">Contact</a>
+    <a href="admin.html">Admin</a>
+  </nav>
+
+</header>
+
+
+<!-- =========================
+     HERO SECTION
+========================= -->
+
+<section class="hero-premium">
+
+  <div class="hero-slider">
+
+    <div class="hero-slide">
+      <img src="images/school1.png" alt="Slide 1">
+    </div>
+
+    <div class="hero-slide">
+      <img src="images/school2.png" alt="Slide 2">
+    </div>
+
+    <div class="hero-slide">
+      <img src="images/school3.png" alt="Slide 3">
+    </div>
+
+  </div>
+
+  <div class="hero-overlay"></div>
+  <div class="hero-text">
+    <h1>Admissions</h1>
+
+    <p>
+      Join a school where excellence, discipline,
+      and learner success come first.
+    </p>
+  </div>
+</section>
+
+<!-- =========================
+     ADMISSION INTRO
+========================= -->
+
+<section class="principal-modern">
+  <div class="principal-grid">
+
+    <div class="principal-photo reveal fade-left">
+      <img src="images/staff.jpg" alt="Admissions">
+    </div>
+
+    <div class="principal-content reveal fade-up">
+      <h2>Welcome to Our Admissions</h2>
+
+      <p>
+        Tswinga Primary School welcomes new learners
+        who are ready to grow academically,
+        socially, and personally in a safe,
+        supportive, and disciplined environment.
+      </p>
+
+      <p>
+        We are committed to providing quality education
+        that builds confidence, leadership,
+        and future-ready learners.
+      </p>
+
+      <p>
+        Our admissions process is simple,
+        transparent, and focused on giving every child
+        the opportunity to succeed.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- =========================
+     REQUIREMENTS
+========================= -->
+
+<section class="academic-phases reveal fade-up">
+  <h2>Admission Requirements</h2>
+
+  <div class="phase-grid">
+
+    <div class="phase-card">
+      <h3>Birth Certificate</h3>
+      <p>
+        Certified copy of learner’s birth certificate
+        is required during registration.
+      </p>
+    </div>
+
+    <div class="phase-card">
+      <h3>Parent ID Copy</h3>
+      <p>
+        Certified copies of parent or guardian
+        identification documents.
+      </p>
+    </div>
+
+    <div class="phase-card">
+      <h3>Previous Report</h3>
+      <p>
+        Latest school report card for transferring
+        learners where applicable.
+      </p>
+    </div>
+
+    <div class="phase-card">
+      <h3>Proof of Address</h3>
+      <p>
+        Recent proof of residence for
+        school record purposes.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- =========================
+     APPLICATION PROCESS
+========================= -->
+
+<section class="vision-modern reveal fade-up">
+
+  <div class="vision-box">
+    <h2>Application Process</h2>
+    <p>
+      Complete the admission form, submit all required
+      supporting documents, and wait for confirmation
+      from the school administration office.
+    </p>
+  </div>
+
+  <div class="vision-box">
+    <h2>Office Support</h2>
+    <p>
+      Our administration office is available to assist
+      parents and guardians with registration guidance
+      and application support.
+    </p>
+  </div>
+
+</section>
+
+<!-- =========================
+     APPLY NOW
+========================= -->
+
+<section class="academic-phases reveal fade-up">
+  <h2>Start Your Application</h2>
+
+  <div style="text-align:center;">
+    <!-- Download PDF Form -->
+    <a href="Tswinga_Admissions_Form.pdf" download class="apply-btn">
+      Download Application Form
+    </a>
+
+    <br><br>
+
+    <!-- Email Submission Button -->
+    <a 
+      href="mailto:tswingaprimary@gmail.com?subject=Admission%20Application&body=Dear%20Tswinga%20Primary%20School,%0A%0APlease%20find%20my%20completed%20admission%20form%20attached.%0A%0AThank%20you."
+      class="apply-btn">
+      Submit Form by Email
+    </a>
+  </div>
+</section>
+
+<!-- Important note for users -->
+<section class="vision-modern reveal fade-up">
+  <div class="vision-box">
+    <h2>How to Submit</h2>
+    <p>
+      1. Download the admission form.<br>
+      2. Complete and save the form on your device.<br>
+      3. Open your email and attach the completed PDF form.<br>
+      4. Send it to tswingaprimary@gmail.com for processing.
+    </p>
+  </div>
+</section>
+<footer>
+  <p>
+    © 2026 Tswinga Primary School |
+    Excellence Through Education
+  </p>
+</footer>
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+function toggleMenu() {
+  const menu = document.getElementById("mobileMenu");
+  menu.classList.toggle("show");
+}
+
+const reveals = document.querySelectorAll(".reveal");
+
+function revealOnScroll() {
+  reveals.forEach((item) => {
+    const windowHeight = window.innerHeight;
+    const elementTop = item.getBoundingClientRect().top;
+    const revealPoint = 120;
+
+    if (elementTop < windowHeight - revealPoint) {
+      item.classList.add("active");
+    }
+  });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
+
+</script>
+
+</body>
+</html>

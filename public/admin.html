@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Login | Tswinga Primary</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="admissions-page">
+
+<section class="admissions-section">
+  <div class="admissions-container">
+
+    <h2>Admin Login</h2>
+
+    <form id="loginForm" class="admission-form">
+
+      <div class="form-grid">
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+      </div>
+
+      <button type="submit" class="submit-btn">Login</button>
+
+    </form>
+
+    <p id="errorMsg" style="color:red; text-align:center;"></p>
+
+  </div>
+</section>
+
+<script>
+document.getElementById("loginForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const user = document.getElementById("username").value;
+  const pass = document.getElementById("password").value;
+
+  // SIMPLE LOGIN (we upgrade later)
+  if(user === "admin" && pass === "1234"){
+    window.location.href = "dashboard.html";
+  } else {
+    document.getElementById("errorMsg").innerText = "Invalid login details";
+  }
+});
+</script>
+
+</body>
+</html>

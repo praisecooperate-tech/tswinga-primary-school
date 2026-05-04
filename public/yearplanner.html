@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Year Planner | Tswinga Primary School</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .planner-container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 40px;
+    }
+
+    .planner-card {
+      background: white;
+      padding: 20px;
+      border-radius: 16px;
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    }
+
+    .planner-card.done {
+      background: #e6ffe6;
+      text-decoration: line-through;
+    }
+
+    .planner-card span {
+      font-weight: 600;
+    }
+
+    .planner-card input {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body class="admissions-page">
+
+<!-- HEADER -->
+<header>
+  <div class="top-bar">
+    <div class="logo-section">
+      <img src="images/logo.jpg" class="school-logo">
+      <div class="school-name">Tswinga Primary School</div>
+    </div>
+
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+    <nav class="menu" id="mobileMenu">
+      <a href="index.html">Home</a>
+      <a href="academics.html">Academics</a>
+      <a href="planner.html">Planner</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero-premium">
+  <div class="hero-overlay"></div>
+  <div class="hero-text">
+    <h1>School Year Planner</h1>
+    <p>Track events, deadlines & activities</p>
+  </div>
+</section>
+
+<!-- PLANNER -->
+<section class="planner-container">
+
+  <h2>2026 School Planner</h2>
+
+  <div id="planner-list"></div>
+
+</section>
+
+<script>
+// SAMPLE EVENTS (you can change these)
+const events = [
+  "2026/01/12 - Teachers Opening & Staff Meeting",
+  "2026/01/13 - Phase Meetings & Lesson Plans Submission",
+  "2026/01/14 - Learners Opening Day",
+  "2026/02/04 - World Read Aloud Day",
+  "2026/02/10 - Grade R & 7 Parents Meeting",
+  "2026/03/09 - Term 1 Assessment Starts",
+  "2026/03/27 - School Closes (Term 1)",
+
+  "2026/04/08 - School Reopens (Term 2)",
+  "2026/05/08 - Website Launch",
+  "2026/06/05 - Term 2 Assessment Starts",
+  "2026/06/26 - School Closes (Term 2)",
+
+  "2026/07/21 - School Reopens (Term 3)",
+  "2026/09/02 - Term 3 Assessment Starts",
+  "2026/09/23 - School Closes (Term 3)",
+
+  "2026/10/06 - School Reopens (Term 4)",
+  "2026/11/06 - Final Exams Start",
+  "2026/12/09 - School Closes (End of Year)"
+];
+
+// LOAD SAVED DATA
+let saved = JSON.parse(localStorage.getItem("planner")) || {};
+
+// RENDER EVENTS
+const container = document.getElementById("planner-list");
+
+events.forEach((event, index) => {
+
+  const div = document.createElement("div");
+  div.className = "planner-card";
+
+  if (saved[index]) div.classList.add("done");
+
+  div.innerHTML = `
+    <span>${event}</span>
+    <input type="checkbox" ${saved[index] ? "checked" : ""}>
+  `;
+
+  const checkbox = div.querySelector("input");
+
+  checkbox.addEventListener("change", () => {
+    saved[index] = checkbox.checked;
+    localStorage.setItem("planner", JSON.stringify(saved));
+
+    div.classList.toggle("done");
+  });
+
+  container.appendChild(div);
+});
+
+function toggleMenu() {
+  document.getElementById("mobileMenu").classList.toggle("show");
+}
+</script>
+
+</body>
+</html>

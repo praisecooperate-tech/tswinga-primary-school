@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="admissions-page">
+
+<section class="admissions-section">
+  <div class="admissions-container">
+
+    <h2>Tswinga Primary Admin Dashboard</h2>
+    <p>Welcome Admin 👋</p>
+
+    <!-- =========================
+         UPLOAD PAPER
+    ========================= -->
+    <!-- =========================
+     UPLOAD PAPER
+========================= -->
+<h3>Upload Question Paper</h3>
+
+<form id="uploadForm" class="admission-form">
+  <div class="form-grid">
+    <input type="text" name="grade" placeholder="Grade (4-7)" required>
+    <input type="text" name="term" placeholder="Term (1-4)" required>
+    <input type="text" name="subject" placeholder="Subject (Maths, English, Tshivenda)" required>
+    <input type="file" name="file" accept=".pdf" required>
+  </div>
+
+  <button type="submit" class="submit-btn">Upload Paper</button>
+</form>
+
+
+<!-- =========================
+     POST NEWS
+========================= -->
+<h3>Post News / Reminder</h3>
+
+<form id="newsForm" class="admission-form">
+  <div class="form-grid">
+    <input type="text" name="title" placeholder="News Title" required>
+  </div>
+
+  <textarea name="message" rows="4" placeholder="Write your message..." required></textarea>
+
+  <button type="submit" class="submit-btn">Post News</button>
+</form>
+
+
+<!-- =========================
+     MANAGE DATA (MOVE HERE)
+========================= -->
+<h3>Manage News</h3>
+<div id="admin-news-list"></div>
+
+<h3>Manage Papers</h3>
+<div id="admin-papers-list"></div>
+
+
+<!-- =========================
+     LOGOUT
+========================= -->
+<div class="download-form">
+  <a href="admin.html" class="download-btn">Logout</a>
+</div>
+  </div>
+</section>
+
+<script>
+
+// =========================
+// UPLOAD PAPER
+// =========================
+document.getElementById("uploadForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const formData = new FormData(this);
+
+  const response = await fetch("/upload", {
+    method: "POST",
+    body: formData
+  });
+
+  alert(await response.text());
+this.reset();   // clears form
+loadPapers();
+});
+
+
+// =========================
+// POST NEWS
+// =========================
+document.getElementById("newsForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const formData = new FormData(this);
+
+  const response = await fetch("/add-news", {
+    method: "POST",
+    body: new URLSearchParams(formData)
+  });
+
+  alert(await response.text());
+  this.reset();
+  loadNews();
+});
+
+
+// =========================
+// LOAD NEWS + DELETE
+// =========================
+async function loadNews() {
+  const res = await fetch("/news");
+  const data = await res.json();
+
+  const container = document.getElementById("admin-news-list");
+  container.innerHTML = "";
+
+  data.forEach((item, index) => {
+    const div = document.createElement("div");
+
+    div.innerHTML = `
+      <p><strong>${item.title}</strong></p>
+      <p>${item.message}</p>
+      <button onclick="deleteNews(${index})">Delete</button>
+      <hr>
+    `;
+
+    container.appendChild(div);
+  });
+}
+
+async function deleteNews(index) {
+  await fetch("/delete-news", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ index })
+  });
+
+  loadNews();
+}
+
+
+// =========================
+// LOAD PAPERS + DELETE
+// =========================
+async function loadPapers() {
+  const res = await fetch("/papers");
+  const data = await res.json();
+
+  const container = document.getElementById("admin-papers-list");
+  container.innerHTML = "";
+
+  data.forEach((item, index) => {
+    const div = document.createElement("div");
+
+    div.innerHTML = `
+      <p>Grade ${item.grade} | Term ${item.term} | ${item.subject}</p>
+      <button onclick="deletePaper(${index})">Delete</button>
+      <hr>
+    `;
+
+    container.appendChild(div);
+  });
+}
+
+async function deletePaper(index) {
+  await fetch("/delete-paper", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ index })
+  });
+
+  loadPapers();
+}
+
+
+// LOAD ON PAGE OPEN
+loadNews();
+loadPapers();
+
+</script>
+
+</body>
+</html>

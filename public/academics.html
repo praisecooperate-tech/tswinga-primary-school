@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Academics | Tswinga Primary School</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="academics-page">
+
+<!-- ========================= HEADER ========================= -->
+<header>
+  <div class="top-bar">
+
+    <div class="logo-section">
+      <img src="images/logo.jpg" class="school-logo">
+      <div class="school-name">Tswinga Primary School</div>
+    </div>
+
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+    <nav class="menu" id="mobileMenu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="admissions.html">Admissions</a>
+      <a href="academics.html">Academics</a>
+      <a href="staff.html">Staff</a>
+<a href="planner.html">Year Planner</a>
+      <a href="contact.html">Contact</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+
+  </div>
+</header>
+
+<!-- ========================= HERO ========================= -->
+<section class="hero-premium">
+
+  <div class="hero-slider">
+
+    <div class="hero-slide">
+      <img src="images/school1.png">
+    </div>
+
+    <div class="hero-slide">
+      <img src="images/school2.png">
+    </div>
+
+    <div class="hero-slide">
+      <img src="images/school3.png">
+    </div>
+
+  </div> <!-- ✅ FIXED: CLOSED SLIDER -->
+
+  <div class="hero-overlay"></div>
+
+  <div class="hero-text">
+    <h1>Academic Resources</h1>
+    <p>Past Examination Papers • Grades 4 – 7</p>
+  </div>
+</section>
+<section class="academic-phases reveal fade-up">
+
+  <h2>Past Question Papers</h2>
+
+  <div id="papers-container" class="phase-grid"></div>
+
+</section>
+<!-- ========================= GALLERY ========================= -->
+<section class="feature-section reveal fade-up">
+
+  <h2 class="feature-title">Academic Excellence</h2>
+
+  <div class="feature-grid">
+
+    <div class="feature-card">
+      <img src="images/acad1.jpg">
+    </div>
+
+    <div class="feature-card">
+      <img src="images/acad2.jpg">
+    </div>
+
+    <div class="feature-card">
+      <img src="images/acad3.jpg">
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ========================= FOOTER ========================= -->
+<footer>
+  <p>© 2026 Tswinga Primary School | Excellence Through Education</p>
+</footer>
+
+<!-- ========================= SCRIPT ========================= -->
+<script>
+function toggleMenu() {
+  document.getElementById("mobileMenu").classList.toggle("show");
+}
+
+/* SCROLL REVEAL FIX */
+const reveals = document.querySelectorAll(".reveal");
+
+function revealOnScroll() {
+  reveals.forEach((item) => {
+    const windowHeight = window.innerHeight;
+    const elementTop = item.getBoundingClientRect().top;
+    const revealPoint = 120;
+
+    if (elementTop < windowHeight - revealPoint) {
+      item.classList.add("active");
+    }
+  });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
+// =========================
+// LOAD PAPERS DYNAMICALLY
+// =========================
+fetch("/papers")
+  .then(res => res.json())
+  .then(data => {
+
+    const container = document.getElementById("papers-container");
+container.innerHTML = "";
+
+    if (data.length === 0) {
+      container.innerHTML = "<p>No papers uploaded yet.</p>";
+      return;
+    }
+
+    const grouped = {};
+
+    data.forEach(item => {
+      const grade = "Grade " + item.grade;
+
+      if (!grouped[grade]) grouped[grade] = {};
+      if (!grouped[grade][item.term]) grouped[grade][item.term] = [];
+
+      grouped[grade][item.term].push(item);
+    });
+
+    for (let grade in grouped) {
+
+      const card = document.createElement("div");
+      card.className = "phase-card";
+
+      let html = `<h3>${grade}</h3>`;
+
+      for (let term in grouped[grade]) {
+
+        html += `<h4>Term ${term}</h4>`;
+
+        grouped[grade][term].forEach(paper => {
+          html += `
+            <div class="term-box">
+              <p>${paper.subject}</p>
+              <a href="/uploads/${paper.file}" download class="apply-btn">Download</a>
+            </div>
+          `;
+        });
+
+      }
+
+      card.innerHTML = html;
+      container.appendChild(card);
+    }
+
+  });
+</script>
+
+</body>
+</html>

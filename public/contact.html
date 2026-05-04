@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Tswinga Primary School</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="contact-page">
+
+<!-- ========================= HEADER ========================= -->
+<header>
+  <div class="top-bar">
+
+    <div class="logo-section">
+      <img src="images/logo.jpg" class="school-logo">
+      <div class="school-name">Tswinga Primary School</div>
+    </div>
+
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+    <nav class="menu" id="mobileMenu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="admissions.html">Admissions</a>
+      <a href="academics.html">Academics</a>
+      <a href="staff.html">Staff</a>
+<a href="planner.html">Year Planner</a>
+      <a href="contact.html">Contact</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+
+  </div>
+</header>
+
+<!-- ========================= HERO ========================= -->
+<section class="hero-premium">
+
+  <div class="hero-slider">
+    <div class="hero-slide">
+      <img src="images/school1.png">
+    </div>
+    <div class="hero-slide">
+      <img src="images/school2.png">
+    </div>
+    <div class="hero-slide">
+      <img src="images/school3.png">
+    </div>
+  </div>
+
+  <div class="hero-overlay"></div>
+
+  <div class="hero-text">
+    <h1>Contact Us</h1>
+    <p>We are here to assist you</p>
+  </div>
+
+</section>
+
+<!-- ========================= CONTACT ========================= -->
+<section class="contact-section reveal fade-up">
+
+  <div class="contact-container">
+
+    <!-- LEFT SIDE -->
+    <div class="contact-info">
+
+      <h2>Get In Touch</h2>
+
+      <p><strong>📍 Address:</strong><br>
+      Manini Drive, Region 3<br>
+      Tswinga, Thohoyandou, 0950</p>
+
+      <p><strong>📞 Phone:</strong><br>
+      082 040 6381</p>
+
+      <p><strong>📧 Email:</strong><br>
+      tswingaprimary@gmail.com</p>
+
+    </div>
+
+    <!-- RIGHT SIDE FORM -->
+    <form id="contactForm" class="contact-form">
+
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+
+      <button type="submit" class="submit-btn">Send Message</button>
+
+      <p id="contactMsg"></p>
+
+    </form>
+
+  </div>
+
+</section>
+
+<!-- ========================= MAP ========================= -->
+<section class="map-section reveal fade-up">
+
+  <h2 class="feature-title">Our Location</h2>
+
+  <div class="map-container">
+    <iframe
+      src="https://www.google.com/maps?q=Manini+Drive+Tswinga+Thohoyandou&output=embed"
+      width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy">
+    </iframe>
+  </div>
+
+</section>
+
+<!-- ========================= FOOTER ========================= -->
+<footer>
+  <p>© 2026 Tswinga Primary School | Excellence Through Education</p>
+</footer>
+
+<!-- ========================= SCRIPT ========================= -->
+<script>
+
+// MENU
+function toggleMenu() {
+  document.getElementById("mobileMenu").classList.toggle("show");
+}
+
+// SCROLL ANIMATION
+const reveals = document.querySelectorAll(".reveal");
+
+function revealOnScroll() {
+  reveals.forEach((item) => {
+    const windowHeight = window.innerHeight;
+    const elementTop = item.getBoundingClientRect().top;
+
+    if (elementTop < windowHeight - 120) {
+      item.classList.add("active");
+    }
+  });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
+
+// CONTACT FORM
+document.getElementById("contactForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const formData = new FormData(this);
+
+  const response = await fetch("/submit-contact", {
+    method: "POST",
+    body: new URLSearchParams(formData)
+  });
+
+  const result = await response.text();
+
+  const msg = document.getElementById("contactMsg");
+  msg.style.color = "green";
+  msg.innerText = result;
+
+  this.reset();
+});
+
+</script>
+
+</body>
+</html>
