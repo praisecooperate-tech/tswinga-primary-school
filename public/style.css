@@ -1167,37 +1167,57 @@ body.about-page .growth-section .phase-card {
   border-radius: 14px;
 }
 /* =========================
-   FORCE HERO TEXT VISIBILITY (HOME ONLY)
+   HERO FIX (FINAL)
 ========================= */
 
-.home-page .hero-text {
-  position: absolute !important;
+.hero-premium {
+  position: relative;
+  height: 90vh;
+  overflow: hidden;
+}
+
+/* SLIDER */
+.hero-slider {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* OVERLAY */
+.hero-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.45);
+  z-index: 2;
+}
+
+/* TEXT (FORCED ABOVE EVERYTHING) */
+.hero-text {
+  position: absolute;
+  z-index: 3;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 999;
-  color: #ffffff;
+  color: white;
   text-align: center;
   width: 90%;
 }
 
-.home-page .hero-overlay {
-  background: rgba(0, 0, 0, 0.4) !important;
-  z-index: 2;
-}
-
-.home-page .hero-slider,
-.home-page .hero-slide img {
-  z-index: 1;
-}
-
 /* MOBILE FIX */
 @media (max-width: 768px) {
-  .home-page .hero-text h1 {
+  .hero-text h1 {
     font-size: 26px;
   }
 
-  .home-page .hero-text p {
+  .hero-text p {
     font-size: 14px;
   }
 }
