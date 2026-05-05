@@ -1167,25 +1167,18 @@ body.about-page .growth-section .phase-card {
   border-radius: 14px;
 }
 /* =========================
-   HOME HERO (MATCH ABOUT STYLE)
+   HOME HERO (RESTORE + FIX TEXT)
 ========================= */
 
 .home-page .hero-premium {
   position: relative;
-  max-width: 1000px;
-  margin: 20px auto;   /* centers like About page */
-  border-radius: 20px;
-  overflow: hidden;
 }
 
-/* REMOVE full height behaviour */
+/* KEEP SLIDER FULL WIDTH */
 .home-page .hero-slider {
-  position: relative;
   width: 100%;
-  height: auto;
 }
 
-/* IMAGE behaves naturally */
 .home-page .hero-slide img {
   width: 100%;
   height: auto;
@@ -1196,41 +1189,26 @@ body.about-page .growth-section .phase-card {
 .home-page .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.35);
+  background: rgba(0,0,0,0.4);
 }
 
-/* TEXT ON IMAGE */
+/* TEXT (VISIBLE BUT NOT BREAKING) */
 .home-page .hero-text {
   position: absolute;
-  bottom: 15px;
-  left: 15px;
-  right: 15px;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  z-index: 3;
   color: white;
-  z-index: 2;
-}
-
-/* TEXT STYLE */
-.home-page .hero-text h1 {
-  font-size: 24px;
-  margin-bottom: 5px;
-}
-
-.home-page .hero-text p {
-  font-size: 14px;
 }
 
 /* MOBILE */
 @media (max-width: 768px) {
-
-  .home-page .hero-premium {
-    margin: 15px;
-  }
-
   .home-page .hero-text h1 {
     font-size: 18px;
   }
 
   .home-page .hero-text p {
-    font-size: 12px;
+    font-size: 13px;
   }
 }
