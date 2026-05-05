@@ -1167,18 +1167,13 @@ body.about-page .growth-section .phase-card {
   border-radius: 14px;
 }
 /* =========================
-   HOME HERO FIX (STABLE)
+   HOME HERO (FINAL FIXED)
 ========================= */
 
 .home-page .hero-premium {
   position: relative;
   height: 65vh;
   overflow: hidden;
-
-  /* NEW: better centering */
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 /* SLIDER */
@@ -1204,17 +1199,21 @@ body.about-page .growth-section .phase-card {
   z-index: 2;
 }
 
-/* TEXT (FIXED) */
+/* TEXT (CORRECT POSITIONING) */
 .home-page .hero-text {
-  position: relative; /* 🔥 important change */
+  position: absolute;
   z-index: 3;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   color: white;
   text-align: center;
   width: 90%;
   max-width: 700px;
+  padding: 0 15px;
 }
 
-/* DESKTOP TEXT */
+/* TEXT SPACING */
 .home-page .hero-text h1 {
   font-size: 38px;
   margin-bottom: 10px;
@@ -1222,12 +1221,24 @@ body.about-page .growth-section .phase-card {
 
 .home-page .hero-text p {
   font-size: 18px;
+  margin: 5px 0;
 }
 
-/* MOBILE */
+/* SUB TEXT */
+.home-page .hero-sub {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* MOBILE FIX */
 @media (max-width: 768px) {
+
   .home-page .hero-premium {
-    height: 55vh;
+    height: 60vh;
+  }
+
+  .home-page .hero-text {
+    top: 55%; /* pushes text slightly lower */
   }
 
   .home-page .hero-text h1 {
