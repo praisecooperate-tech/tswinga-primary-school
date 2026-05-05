@@ -1167,31 +1167,30 @@ body.about-page .growth-section .phase-card {
   border-radius: 14px;
 }
 /* =========================
-   HERO FIX (FINAL)
+   HOME HERO ONLY (SAFE)
 ========================= */
 
-.hero-premium {
+.home-page .hero-premium {
   position: relative;
-  height: 90vh;
+  height: 75vh;
+  min-height: 400px;
   overflow: hidden;
 }
 
-/* SLIDER */
-.hero-slider {
+.home-page .hero-slider {
   position: absolute;
   width: 100%;
   height: 100%;
   z-index: 1;
 }
 
-.hero-slide img {
+.home-page .hero-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* OVERLAY */
-.hero-overlay {
+.home-page .hero-overlay {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -1199,8 +1198,7 @@ body.about-page .growth-section .phase-card {
   z-index: 2;
 }
 
-/* TEXT (FORCED ABOVE EVERYTHING) */
-.hero-text {
+.home-page .hero-text {
   position: absolute;
   z-index: 3;
   top: 50%;
@@ -1209,15 +1207,20 @@ body.about-page .growth-section .phase-card {
   color: white;
   text-align: center;
   width: 90%;
+  max-width: 700px;
 }
 
-/* MOBILE FIX */
+/* MOBILE */
 @media (max-width: 768px) {
-  .hero-text h1 {
-    font-size: 26px;
+  .home-page .hero-premium {
+    height: 60vh;
   }
 
-  .hero-text p {
+  .home-page .hero-text h1 {
+    font-size: 24px;
+  }
+
+  .home-page .hero-text p {
     font-size: 14px;
   }
 }
