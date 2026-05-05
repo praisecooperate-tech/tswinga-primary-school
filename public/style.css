@@ -1166,3 +1166,16 @@ body.about-page .growth-section .phase-card {
   object-position: top center; /* keeps faces visible */
   border-radius: 14px;
 }
+/* =========================
+   HOME HERO FIX
+========================= */
+
+.home-page .hero-overlay {
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.home-page .hero-text {
+  position: relative;
+  z-index: 2;
+  color: white;
+}
