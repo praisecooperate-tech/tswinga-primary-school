@@ -1167,15 +1167,37 @@ body.about-page .growth-section .phase-card {
   border-radius: 14px;
 }
 /* =========================
-   HOME HERO FIX
+   FORCE HERO TEXT VISIBILITY (HOME ONLY)
 ========================= */
 
-.home-page .hero-overlay {
-  background: rgba(0, 0, 0, 0.45);
+.home-page .hero-text {
+  position: absolute !important;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  color: #ffffff;
+  text-align: center;
+  width: 90%;
 }
 
-.home-page .hero-text {
-  position: relative;
+.home-page .hero-overlay {
+  background: rgba(0, 0, 0, 0.4) !important;
   z-index: 2;
-  color: white;
+}
+
+.home-page .hero-slider,
+.home-page .hero-slide img {
+  z-index: 1;
+}
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+  .home-page .hero-text h1 {
+    font-size: 26px;
+  }
+
+  .home-page .hero-text p {
+    font-size: 14px;
+  }
 }
