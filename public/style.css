@@ -1167,16 +1167,21 @@ body.about-page .growth-section .phase-card {
   border-radius: 14px;
 }
 /* =========================
-   HOME HERO ONLY (SAFE)
+   HOME HERO FIX (STABLE)
 ========================= */
 
 .home-page .hero-premium {
   position: relative;
-  height: 75vh;
-  min-height: 400px;
+  height: 65vh;
   overflow: hidden;
+
+  /* NEW: better centering */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* SLIDER */
 .home-page .hero-slider {
   position: absolute;
   width: 100%;
@@ -1190,6 +1195,7 @@ body.about-page .growth-section .phase-card {
   object-fit: cover;
 }
 
+/* OVERLAY */
 .home-page .hero-overlay {
   position: absolute;
   width: 100%;
@@ -1198,26 +1204,34 @@ body.about-page .growth-section .phase-card {
   z-index: 2;
 }
 
+/* TEXT (FIXED) */
 .home-page .hero-text {
-  position: absolute;
+  position: relative; /* 🔥 important change */
   z-index: 3;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   color: white;
   text-align: center;
   width: 90%;
   max-width: 700px;
 }
 
+/* DESKTOP TEXT */
+.home-page .hero-text h1 {
+  font-size: 38px;
+  margin-bottom: 10px;
+}
+
+.home-page .hero-text p {
+  font-size: 18px;
+}
+
 /* MOBILE */
 @media (max-width: 768px) {
   .home-page .hero-premium {
-    height: 60vh;
+    height: 55vh;
   }
 
   .home-page .hero-text h1 {
-    font-size: 24px;
+    font-size: 22px;
   }
 
   .home-page .hero-text p {
